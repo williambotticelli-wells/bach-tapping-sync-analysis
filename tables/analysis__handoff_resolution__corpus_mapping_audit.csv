@@ -1,0 +1,11 @@
+wtc_code,beta_table_rows,manifest_tracks_final_wtc_code,manifest_track_names_final_wtc_code,tracks_with_beta_table_piece_label,track_names_with_beta_table_piece_label,beta_lists,beta_perf_values,status
+wtc1f03,2,2,track8|track9,4,track10|track23|track8|track9,3,-0.6237|-0.6684,present_in_manifest
+wtc1f05,2,2,track16|track21,2,track16|track21,3,-0.539|-0.5387,present_in_manifest
+wtc1p03,4,4,track10|track15|track19|track23,6,track10|track15|track19|track23|track8|track9,2|3,-1.3369|-1.0295|-1.2481|-1.1204,present_in_manifest
+wtc1p04,2,2,track12|track6,2,track12|track6,2,-0.2648|-0.3545,present_in_manifest
+wtc1p15,4,4,track1|track11|track13|track2,4,track1|track11|track13|track2,2|3,-0.417|-0.2186|-0.2187|-0.3972,present_in_manifest
+wtc1p17,2,2,track14|track24,2,track14|track24,1,-1.0328|-0.9336,present_in_manifest
+wtc2f06,2,2,track3|track4,2,track3|track4,1,-1.0934|-0.9994,present_in_manifest
+wtc2f07,2,2,track17|track22,2,track17|track22,2,-0.7004|-0.8852,present_in_manifest
+wtc2p01,2,2,track18|track5,2,track18|track5,1,-0.2781|-0.3205,present_in_manifest
+wtc2p24,2,2,track20|track7,2,track20|track7,1,-0.44|-0.5012,present_in_manifest

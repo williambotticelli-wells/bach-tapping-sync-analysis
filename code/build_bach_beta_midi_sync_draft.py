@@ -103,7 +103,7 @@ def main() -> None:
         deployed_name = normalize_deployed_name(original_deployed_names.get(track, deployed.name))
         beta_row = beta_lookup.get((piece, deployed_name))
 
-        status = "beta_midi_draft_needs_manual_review"
+        status = "midi_pending_confirmation"
         notes = str(row.get("notes", ""))
         midi_path: Path | None = None
         if beta_row is None:

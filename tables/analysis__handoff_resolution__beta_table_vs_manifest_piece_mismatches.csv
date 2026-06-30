@@ -1,5 +1,0 @@
-stim_name,piece,wtc_code,manifest_wtc_code,beta_piece_override_applied,beta_oname,notes
-track10,wtc1f03,wtc1p03,wtc1p03,False,cut-MIDI-Unprocessed_049_PIANO049_MID--AUDIO-split_07-06-17_Piano-e_2-06_wav--1.wav,Corrected from wtc1f03 long duplicate to wtc1p03 short performance.
-track23,wtc1f03,wtc1p03,wtc1p03,False,cut-MIDI-Unprocessed_24_R1_2011_MID--AUDIO_R1-D9_08_Track08_wav.wav,Corrected from wtc1f03 long duplicate to wtc1p03 short performance; MIDI still flagged for final human confirmation. midi_needs_final_human_confirmation despite corrected duration-ranked wtc1p03_82
-track8,wtc1p03,wtc1f03,wtc1p03,True,cut-MIDI-Unprocessed_24_R1_2011_MID--AUDIO_R1-D9_08_Track08_wav.wav,"midi_wrong_family_in_draft; review flagged_midi_candidate_audit, likely wtc1f03 candidates not current wtc1p03"
-track9,wtc1p03,wtc1f03,wtc1p03,True,cut-MIDI-Unprocessed_049_PIANO049_MID--AUDIO-split_07-06-17_Piano-e_2-06_wav--1.wav,"midi_wrong_family_in_draft; review flagged_midi_candidate_audit, likely wtc1f03_108 by duration"

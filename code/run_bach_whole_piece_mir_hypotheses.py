@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Screen Nori whole-piece MIR features against per-track tapping coherence."""
+"""Screen whole-piece MIR features against per-track tapping coherence."""
 
 from __future__ import annotations
 
@@ -84,12 +84,12 @@ def main() -> None:
                 }
             )
     out = pd.DataFrame(rows).sort_values(["target", "abs_pearson_r"], ascending=[True, False])
-    out.to_csv(OUT_DIR / "nori_whole_piece_feature_correlations.csv", index=False)
+    out.to_csv(OUT_DIR / "whole_piece_mir_feature_correlations.csv", index=False)
 
     top = out.groupby("target", group_keys=False).head(8)
-    top.to_csv(OUT_DIR / "nori_whole_piece_top_correlations.csv", index=False)
-    print(f"Wrote {OUT_DIR / 'nori_whole_piece_feature_correlations.csv'}")
-    print(f"Wrote {OUT_DIR / 'nori_whole_piece_top_correlations.csv'}")
+    top.to_csv(OUT_DIR / "whole_piece_mir_top_correlations.csv", index=False)
+    print(f"Wrote {OUT_DIR / 'whole_piece_mir_feature_correlations.csv'}")
+    print(f"Wrote {OUT_DIR / 'whole_piece_mir_top_correlations.csv'}")
     print(f"Tracks: {df['stim_name'].nunique()}; features screened: {len(feature_cols)}")
     print(top[["target", "feature", "pearson_r", "spearman_r", "n_tracks"]].to_string(index=False))
 

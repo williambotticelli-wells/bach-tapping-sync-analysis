@@ -1,0 +1,5 @@
+stim_name,source_table_piece_code,analysis_piece_code,deployed_manifest_piece_code,stimulus_filename,mapping_note
+track10,wtc1f03,wtc1p03,wtc1p03,cut-MIDI-Unprocessed_049_PIANO049_MID--AUDIO-split_07-06-17_Piano-e_2-06_wav--1.wav,Piece-code mapping corrected from source-table label.
+track23,wtc1f03,wtc1p03,wtc1p03,cut-MIDI-Unprocessed_24_R1_2011_MID--AUDIO_R1-D9_08_Track08_wav.wav,Piece-code mapping corrected from source-table label; MIDI retained for traceability.
+track8,wtc1p03,wtc1f03,wtc1p03,cut-MIDI-Unprocessed_24_R1_2011_MID--AUDIO_R1-D9_08_Track08_wav.wav,MIDI/piece-code mapping differs between source table and analysis manifest; retained for traceability.
+track9,wtc1p03,wtc1f03,wtc1p03,cut-MIDI-Unprocessed_049_PIANO049_MID--AUDIO-split_07-06-17_Piano-e_2-06_wav--1.wav,MIDI/piece-code mapping differs between source table and analysis manifest; retained for traceability.

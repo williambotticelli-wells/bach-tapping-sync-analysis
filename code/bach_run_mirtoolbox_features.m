@@ -101,7 +101,7 @@ whole_names = {};
 if exist('pdist', 'file') ~= 2
     status_row = {char(stim_name), char(wtc_code), char(wav_path), duration_s, ...
         'skipped_missing_statistics_toolbox', ...
-        'Nori Compute_audio_features/mirfeatures requires pdist for some spectral features.'};
+        'Compute_audio_features/mirfeatures requires pdist for some spectral features.'};
     return;
 end
 try
@@ -112,7 +112,7 @@ try
     whole_row = [{char(stim_name), char(wtc_code), char(wav_path), duration_s}, feature_cells];
     status_row = {char(stim_name), char(wtc_code), char(wav_path), duration_s, ...
         'exported', ...
-        sprintf('Exported %d Nori/Compute_audio_features whole-piece MIR features.', feature_cnt)};
+        sprintf('Exported %d Compute_audio_features whole-piece MIR features.', feature_cnt)};
 catch ME
     status_row = {char(stim_name), char(wtc_code), char(wav_path), duration_s, ...
         'failed', ME.message};

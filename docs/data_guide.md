@@ -13,6 +13,10 @@
 
 - `tables/analysis__beta_sync_multimodal__bach_time_binned_multimodal_with_matlab_toolboxes.csv`
   - Primary time-binned table for joining music features with tapping coherence.
+- `tables/analysis__beta_sync_100ms__bach_100ms_midi_tapping_feature_vectors.csv`
+  - 100 ms feature-vector table for emotion/ECoG joins. Includes MIDI note onset
+    density, active-note density, pitch min/max/range, velocity/dynamic range,
+    tap count, and unique tapper count.
 - `tables/analysis__beta_sync_tapping__istc_time_resolved.csv`
   - Time-resolved tapping coherence.
 - `tables/analysis__beta_sync_tapping__istc_per_track.csv`

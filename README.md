@@ -22,6 +22,7 @@ musical onset in the synchronized audio/MIDI packet.
 
 - `tables/bach_beta_midi_sync_manifest.csv`: canonical sync manifest.
 - `tables/analysis__beta_sync_multimodal__bach_time_binned_multimodal_with_matlab_toolboxes.csv`: main time-binned analysis matrix.
+- `tables/analysis__beta_sync_100ms__bach_100ms_midi_tapping_feature_vectors.csv`: 100 ms MIDI and tapping feature vectors for emotion/ECoG joins.
 - `tables/analysis__matlab_toolbox_features__matlab_toolbox_feature_inventory.csv`: list of available feature sets.
 - `tables/analysis__beta_sync_tapping__istc_per_track.csv`: per-track tapping coherence.
 - `tables/analysis__beta_sync_tapping__istc_time_resolved.csv`: time-resolved tapping coherence.

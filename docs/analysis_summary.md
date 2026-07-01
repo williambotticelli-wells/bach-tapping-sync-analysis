@@ -23,6 +23,11 @@ Across time bins, higher note activity and denser symbolic texture tend to align
 with stronger tapping concentration. This is a screening result meant to guide
 follow-up modeling with emotion and ECoG data.
 
+The dedicated 100 ms MIDI/tapping vectors show the same direction but smaller
+stand-alone effects: active-note count and MIDI onset count are positively
+associated with local tap concentration after centering within track. These
+tables are most useful as high-resolution inputs for later emotion/ECoG joins.
+
 ## Notes
 
 - The source stimulus table contains 24 rows and 10 WTC piece codes.

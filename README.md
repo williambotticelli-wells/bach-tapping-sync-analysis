@@ -23,6 +23,8 @@ musical onset in the synchronized audio/MIDI packet.
 - `tables/bach_beta_midi_sync_manifest.csv`: canonical sync manifest.
 - `tables/analysis__beta_sync_multimodal__bach_time_binned_multimodal_with_matlab_toolboxes.csv`: main time-binned analysis matrix.
 - `tables/analysis__beta_sync_100ms__bach_100ms_midi_tapping_feature_vectors.csv`: 100 ms MIDI and tapping feature vectors for emotion/ECoG joins.
+- `tables/analysis__beta_sync_100ms_models__bach_100ms_within_track_correlations.csv`: 100 ms within-track MIDI/tapping correlation screen.
+- `tables/analysis__beta_sync_100ms_models__bach_100ms_within_track_bayesian_ridge_screen.csv`: Bayesian ridge direction screen for the 100 ms MIDI/tapping vectors.
 - `tables/analysis__matlab_toolbox_features__matlab_toolbox_feature_inventory.csv`: list of available feature sets.
 - `tables/analysis__beta_sync_tapping__istc_per_track.csv`: per-track tapping coherence.
 - `tables/analysis__beta_sync_tapping__istc_time_resolved.csv`: time-resolved tapping coherence.
@@ -46,3 +48,5 @@ musical onset in the synchronized audio/MIDI packet.
 ## Preliminary signal
 
 Across time bins, denser/active MIDI texture tends to coincide with higher tapping concentration, while broader/brighter spectral texture tends to coincide with lower tapping concentration. This is consistent across four time-resolved tapping targets but should be treated as exploratory.
+
+At the 100 ms MIDI/tapping resolution, the strongest within-track associations are positive but small: active-note count and MIDI onset count track local tap concentration. These vectors are best treated as alignment-ready inputs for emotion/ECoG models rather than stand-alone paper-level evidence.

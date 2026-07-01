@@ -17,6 +17,11 @@
   - 100 ms feature-vector table for emotion/ECoG joins. Includes MIDI note onset
     density, active-note density, pitch min/max/range, velocity/dynamic range,
     tap count, and unique tapper count.
+- `tables/analysis__beta_sync_100ms_models__bach_100ms_within_track_correlations.csv`
+  - Within-track 100 ms correlation screen relating local MIDI features to local
+    tap concentration.
+- `tables/analysis__beta_sync_100ms_models__bach_100ms_within_track_bayesian_ridge_screen.csv`
+  - Bayesian ridge direction screen using the same 100 ms feature vectors.
 - `tables/analysis__beta_sync_tapping__istc_time_resolved.csv`
   - Time-resolved tapping coherence.
 - `tables/analysis__beta_sync_tapping__istc_per_track.csv`
@@ -36,6 +41,8 @@
   - Whole-piece MIR feature/coherence screens.
 - `tables/analysis__beta_globaltap_canonical__optimizer_time_binned_within_track_correlations.csv`
   - Within-track time-binned relationships involving the exploratory optimizer outputs.
+- `docs/bach_100ms_feature_modeling_summary.md`
+  - Short summary of the 100 ms correlation, regression, and Bayesian ridge screens.
 
 ## Code
 

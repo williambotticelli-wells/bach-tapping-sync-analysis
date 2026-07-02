@@ -25,10 +25,10 @@ follow-up modeling with emotion and ECoG data.
 
 The dedicated 100 ms MIDI/tapping vectors show the same direction but smaller
 stand-alone effects: active-note count and MIDI onset count are positively
-associated with local tap concentration after centering within track. These
+associated with local tap concentration after centering within track. The 100 ms
+acoustic screen adds a matching audio feature grid: spectral bandwidth/centroid
+are weakly negative with local tap count, while RMS is weakly positive. These
 tables are most useful as high-resolution inputs for later emotion/ECoG joins.
-The 100 ms screens use aggregate tapping and MIDI features suitable for later
-emotion/ECoG joins.
 
 ## Notes
 

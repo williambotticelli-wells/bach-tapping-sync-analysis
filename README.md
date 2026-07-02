@@ -24,6 +24,8 @@ musical onset in the synchronized audio/MIDI packet.
   audio, MIDI, or PNG files.
 - Use `docs/data_guide.md` as the table index.
 - Use `tables/analysis__beta_sync_100ms__bach_100ms_midi_tapping_feature_vectors.csv` for 100 ms emotion/ECoG joins.
+- Use `tables/analysis__beta_sync_100ms__bach_100ms_audio_feature_vectors.csv` for 100 ms acoustic/MIR-style joins.
+- Use `tables/analysis__beta_sync_100ms__bach_100ms_audio_midi_tapping_feature_vectors.csv` for the combined 100 ms acoustic/MIDI/tapping grid.
 - Use `tables/analysis__beta_sync_multimodal__bach_time_binned_multimodal_with_matlab_toolboxes.csv` for time-binned MIR/MIDI/audio/tapping analyses.
 - Use `audio_midi_t0/` when checking synchronized audio/MIDI materials by ear or by waveform.
 
@@ -48,6 +50,9 @@ the companion optimizer repository next to the Bach workspace.
 - `tables/bach_beta_midi_sync_manifest.csv`: canonical sync manifest.
 - `tables/analysis__beta_sync_multimodal__bach_time_binned_multimodal_with_matlab_toolboxes.csv`: main time-binned analysis matrix.
 - `tables/analysis__beta_sync_100ms__bach_100ms_midi_tapping_feature_vectors.csv`: 100 ms MIDI and tapping feature vectors for emotion/ECoG joins.
+- `tables/analysis__beta_sync_100ms__bach_100ms_audio_feature_vectors.csv`: 100 ms acoustic feature vectors on the same grid.
+- `tables/analysis__beta_sync_100ms__bach_100ms_audio_midi_tapping_feature_vectors.csv`: joined 100 ms acoustic/MIDI/tapping feature vectors.
+- `tables/analysis__beta_sync_100ms_models__bach_100ms_audio_within_track_correlations.csv`: local 100 ms acoustic/tapping correlation screen.
 - `tables/analysis__beta_sync_100ms_models__bach_100ms_within_track_correlations.csv`: local 100 ms MIDI/tapping correlation screen.
 - `tables/analysis__beta_sync_100ms_models__bach_100ms_within_track_bayesian_ridge_screen.csv`: Bayesian ridge direction screen for the 100 ms MIDI/tapping vectors.
 - `tables/analysis__matlab_toolbox_features__matlab_toolbox_feature_inventory.csv`: list of available feature sets.

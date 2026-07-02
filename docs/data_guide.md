@@ -18,9 +18,19 @@
   - 100 ms feature-vector table for emotion/ECoG joins. Includes MIDI note onset
     count, active-note count, pitch min/max/range, velocity range, and tap count.
     Join on `stim_name`, `wtc_code`, and `bin_center_s`.
+- `tables/analysis__beta_sync_100ms__bach_100ms_audio_feature_vectors.csv`
+  - 100 ms acoustic feature-vector table on the same grid. It includes RMS,
+    zero-crossing rate, spectral centroid/bandwidth/rolloff, and an onset-strength
+    proxy. Join on `stim_name`, `wtc_code`, and `bin_center_s`.
+- `tables/analysis__beta_sync_100ms__bach_100ms_audio_midi_tapping_feature_vectors.csv`
+  - Joined 100 ms acoustic/MIDI/tapping table. Use this when a single table is
+    more convenient than joining the separate vectors.
 - `tables/analysis__beta_sync_100ms_models__bach_100ms_within_track_correlations.csv`
   - Within-track 100 ms correlation screen relating local MIDI features to local
     tap concentration.
+- `tables/analysis__beta_sync_100ms_models__bach_100ms_audio_within_track_correlations.csv`
+  - Within-track 100 ms correlation screen relating local acoustic features to
+    local tap concentration.
 - `tables/analysis__beta_sync_100ms_models__bach_100ms_within_track_bayesian_ridge_screen.csv`
   - Bayesian ridge direction screen using the same 100 ms feature vectors.
 - `tables/analysis__beta_sync_tapping__istc_time_resolved.csv`
@@ -46,6 +56,8 @@
     concentration; `optimizer_*` target rows are optimizer quality-control screens.
 - `docs/bach_100ms_feature_modeling_summary.md`
   - Short summary of the 100 ms correlation, regression, and Bayesian ridge screens.
+- `docs/bach_100ms_audio_feature_modeling_summary.md`
+  - Short summary of the 100 ms acoustic/MIR-style feature screen.
 
 ## Code
 
@@ -53,3 +65,9 @@ The checked-in `tables/`, `audio_midi_t0/`, and `plots/` outputs are ready to
 use directly. The `code/` folder contains the scripts used to generate them from
 the full Bach workspace layout; some rebuild scripts expect source folders that
 are not part of this collaborator package.
+
+`code/bach_run_100ms_mirtoolbox_features.m` provides a MATLAB/MIRToolbox route
+for short-window RMS, brightness, roughness, and centroid features.
+`code/build_bach_100ms_audio_features.py` is the dependency-light Python route
+used for the checked-in 100 ms acoustic vectors. `code/join_bach_100ms_audio_midi_tapping_features.py`
+builds the joined 100 ms acoustic/MIDI/tapping table.

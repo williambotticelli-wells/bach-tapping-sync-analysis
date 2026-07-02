@@ -187,6 +187,7 @@ def track_level_whole_piece_screen() -> pd.DataFrame:
         for c in merged.columns
         if c not in {"stim_name", "wtc_code", "source_audio_path", "midi_path"}
         and c not in TRACK_TARGETS
+        and c not in {"mean_tap_count_per_100ms_bin", "mean_unique_participants_per_100ms_bin"}
         and pd.api.types.is_numeric_dtype(merged[c])
         and merged[c].notna().sum() >= 12
         and merged[c].nunique(dropna=True) > 3
@@ -200,7 +201,7 @@ def write_summary(global_corr: pd.DataFrame, within_corr: pd.DataFrame, bayes: p
     lines = [
         "# Bach 100 ms Feature Modeling Summary",
         "",
-        "These are screening analyses for MIDI/MIR/tapping feature relationships. Redundant fixed-bin rescalings are omitted, so `tap_count_100ms` is the single 100 ms tapping-concentration target.",
+        "These are screening analyses for MIDI/MIR/tapping feature relationships at 100 ms resolution. The within-track rows are the main local-effect screen; global correlations are included as context because they can reflect track-level differences.",
         "",
         "## 100 ms Within-Track Signals",
         "",

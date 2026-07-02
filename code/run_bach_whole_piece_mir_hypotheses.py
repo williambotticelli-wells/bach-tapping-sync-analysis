@@ -22,8 +22,6 @@ CONSENSUS = TAPPING_ROOT / "track_consensus_summary.csv"
 
 TARGETS = [
     "istc_mean_max_unique_per_sec",
-    "tap_count_mean_max_per_sec",
-    "max_tap_count_per_100ms_bin",
     "consensus_tempo_bpm",
     "beat_sequence_cv_ioi_pct",
 ]

@@ -15,8 +15,7 @@ onset used in the synchronized audio/MIDI packet.
   and participant-count convergence summaries.
 - Time-binned MIRToolbox, MIDI Toolbox, audio, MIDI, and tapping-coherence
   features.
-- Preliminary feature/coherence association tables with redundant target
-  rescalings removed.
+- Preliminary feature/coherence association tables.
 
 ## Preliminary Pattern
 
@@ -28,9 +27,8 @@ The dedicated 100 ms MIDI/tapping vectors show the same direction but smaller
 stand-alone effects: active-note count and MIDI onset count are positively
 associated with local tap concentration after centering within track. These
 tables are most useful as high-resolution inputs for later emotion/ECoG joins.
-The 100 ms screens use `tap_count_100ms` as the representative local tapping
-target; fixed-bin density columns and near-identical unique-tapper variants are
-not treated as separate outcomes.
+The 100 ms screens use aggregate tapping and MIDI features suitable for later
+emotion/ECoG joins.
 
 ## Notes
 

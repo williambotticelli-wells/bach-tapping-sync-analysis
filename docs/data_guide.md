@@ -13,11 +13,11 @@
 
 - `tables/analysis__beta_sync_multimodal__bach_time_binned_multimodal_with_matlab_toolboxes.csv`
   - Primary time-binned table for joining music features with tapping coherence.
+    Join on `stim_name`, `wtc_code`, and `window_center_s`.
 - `tables/analysis__beta_sync_100ms__bach_100ms_midi_tapping_feature_vectors.csv`
   - 100 ms feature-vector table for emotion/ECoG joins. Includes MIDI note onset
     count, active-note count, pitch min/max/range, velocity range, and tap count.
-    Fixed-bin density rescalings and near-identical tapping variants are omitted
-    from the cleaned screening outputs.
+    Join on `stim_name`, `wtc_code`, and `bin_center_s`.
 - `tables/analysis__beta_sync_100ms_models__bach_100ms_within_track_correlations.csv`
   - Within-track 100 ms correlation screen relating local MIDI features to local
     tap concentration.
@@ -37,16 +37,19 @@
 ## Preliminary Results
 
 - `tables/analysis__beta_sync_hypotheses__feature_coherence_correlations.csv`
-  - Time-binned feature/coherence screen for the representative tapping-
-    concentration target.
+  - Time-binned feature/coherence screen.
 - `tables/analysis__beta_sync_hypotheses__whole_piece_mir_feature_correlations.csv`
   - Whole-piece MIR feature/coherence screens.
 - `tables/analysis__beta_globaltap_canonical__optimizer_time_binned_within_track_correlations.csv`
   - Within-track time-binned relationships involving the exploratory optimizer outputs.
+    Use rows where `target == istc_mean_max_unique_per_sec` for tapping
+    concentration; `optimizer_*` target rows are optimizer quality-control screens.
 - `docs/bach_100ms_feature_modeling_summary.md`
   - Short summary of the 100 ms correlation, regression, and Bayesian ridge screens.
 
 ## Code
 
-The `code/` folder contains the scripts used to generate the synchronized tables,
-MIR/MIDI feature joins, tapping metrics, and exploratory analyses.
+The checked-in `tables/`, `audio_midi_t0/`, and `plots/` outputs are ready to
+use directly. The `code/` folder contains the scripts used to generate them from
+the full Bach workspace layout; some rebuild scripts expect source folders that
+are not part of this collaborator package.

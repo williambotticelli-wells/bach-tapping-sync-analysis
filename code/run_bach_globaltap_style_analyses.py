@@ -35,7 +35,14 @@ if str(OPT_ROOT) not in sys.path:
 
 from build_three_file_sync_packet import parse_midi_note_events  # noqa: E402
 from compute_bach_tap_metrics import taps_from_row  # noqa: E402
-import run_pipeline as gt_opt  # noqa: E402
+try:
+    import run_pipeline as gt_opt  # noqa: E402
+except ImportError as exc:  # pragma: no cover - optional full-workspace dependency
+    raise ImportError(
+        "run_bach_globaltap_style_analyses.py requires the GlobalTap optimizer "
+        "companion repo at ../companion_repo/optimization. The checked-in tables "
+        "already include the optimizer outputs."
+    ) from exc
 
 
 MANIFEST = BACH_ROOT / "alignment" / "beta_midi_sync_draft" / "bach_beta_midi_sync_manifest.csv"

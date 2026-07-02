@@ -1,6 +1,6 @@
 # Bach 100 ms Feature Modeling Summary
 
-These are screening analyses for MIDI/MIR/tapping feature relationships. Redundant fixed-bin rescalings are omitted: `tap_count_100ms` is the single 100 ms tapping-concentration target, and count/range predictors are used instead of exact density/dynamic-range duplicates.
+These are screening analyses for MIDI/MIR/tapping feature relationships at 100 ms resolution. The within-track rows are the main local-effect screen; global correlations are included as context because they can reflect track-level differences.
 
 ## 100 ms Within-Track Signal
 

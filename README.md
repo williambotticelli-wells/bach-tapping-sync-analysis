@@ -44,6 +44,9 @@ the companion optimizer repository next to the Bach workspace.
 - In optimizer tables, rows where `target == istc_mean_max_unique_per_sec`
   concern tapping concentration; rows with `optimizer_*` targets are optimizer
   quality-control screens.
+- A few columns are exact duplicates of another column in the same table
+  (e.g. `n_participants`/`n_trials`); see "Known Duplicate Columns" in
+  `docs/data_guide.md` for the full list and which one to prefer.
 
 ## Most important tables
 

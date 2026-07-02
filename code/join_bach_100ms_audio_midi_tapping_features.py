@@ -25,9 +25,22 @@ def round_time_keys(df: pd.DataFrame) -> pd.DataFrame:
     return out
 
 
+DROP_DUPLICATE_COLS = {
+    # mir100_rms is numerically identical (within floating-point noise) to
+    # audio100_rms: RMS on a fixed 100 ms window is fully determined by the
+    # samples, so the MATLAB and Python pipelines agree exactly. Keeping both
+    # would be a true duplicate column rather than an independent signal.
+    "mir100_rms",
+}
+
+
 def feature_cols(df: pd.DataFrame, prefixes: tuple[str, ...]) -> list[str]:
     meta = set(KEY_COLS + ["bin_width_s", "source_audio_path"])
-    return [col for col in df.columns if col not in meta and col.startswith(prefixes)]
+    return [
+        col
+        for col in df.columns
+        if col not in meta and col not in DROP_DUPLICATE_COLS and col.startswith(prefixes)
+    ]
 
 
 def maybe_join(base: pd.DataFrame, path: Path, prefixes: tuple[str, ...], label: str) -> pd.DataFrame:

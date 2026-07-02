@@ -329,6 +329,10 @@ def join_multimodal(audio_bins: pd.DataFrame, midi_bins: pd.DataFrame, istc_time
             "manifest_wtc_code",
         ]
         joined = joined.merge(consensus[[col for col in con_cols if col in consensus.columns]], on="stim_name", how="left", suffixes=("", "_track"))
+    empty_cols = [col for col in joined.columns if joined[col].isna().all()]
+    if empty_cols:
+        print(f"Dropping all-missing columns (e.g. chroma requires librosa, which is unavailable here): {empty_cols}")
+        joined = joined.drop(columns=empty_cols)
     joined.to_csv(MULTIMODAL_OUT / "bach_time_binned_multimodal_table.csv", index=False)
     return joined
 

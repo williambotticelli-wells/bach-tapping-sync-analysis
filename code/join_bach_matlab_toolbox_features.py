@@ -39,8 +39,13 @@ def main() -> None:
     mir = add_bin_keys(pd.read_csv(MIR_BINNED))
     mtb = add_bin_keys(pd.read_csv(MTB_BINNED))
 
+    # mtb_note_onset_density_per_s is note count divided by the (fixed) window
+    # size, so it is an exact rescaling of mtb_n_note_onsets. Keep only the count.
+    drop_duplicate_cols = {"mtb_note_onset_density_per_s"}
     mir_feature_cols = [col for col in mir.columns if col.startswith("mir_")]
-    mtb_feature_cols = [col for col in mtb.columns if col.startswith("mtb_")]
+    mtb_feature_cols = [
+        col for col in mtb.columns if col.startswith("mtb_") and col not in drop_duplicate_cols
+    ]
 
     joined = base.merge(
         mir[KEY_COLS + mir_feature_cols],

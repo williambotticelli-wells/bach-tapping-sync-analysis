@@ -59,6 +59,27 @@
 - `docs/bach_100ms_audio_feature_modeling_summary.md`
   - Short summary of the 100 ms acoustic/MIR-style feature screen.
 
+## Known Duplicate Columns
+
+A handful of columns are exact numeric duplicates of another column in the same
+table. They are kept (rather than silently dropped) because they come from a
+genuinely different source file, but you only need to read one of each pair:
+
+- `n_participants` / `n_trials`: identical in this dataset because every
+  participant contributes exactly one trial per track. Prefer `n_participants`.
+- `max_tap_count_per_100ms_bin` / `max_unique_participants_per_100ms_bin`
+  (track-level coherence table only): identical because no participant taps
+  twice in the same 100 ms bin. Prefer `max_unique_participants_per_100ms_bin`.
+
+Two other duplicate-by-construction columns were removed outright rather than
+kept: `mir100_rms` (bit-identical to `audio100_rms` — RMS on a fixed 100 ms
+window has no algorithm-specific choices, so the Python and MATLAB pipelines
+agree exactly) and `mtb_note_onset_density_per_s` (an exact rescaling of
+`mtb_n_note_onsets` by the fixed window size). The chroma-strength columns were
+also dropped from the time-binned multimodal table because they require
+`librosa`, which was unavailable when these tables were built, and were 100%
+missing.
+
 ## Code
 
 The checked-in `tables/`, `audio_midi_t0/`, and `plots/` outputs are ready to

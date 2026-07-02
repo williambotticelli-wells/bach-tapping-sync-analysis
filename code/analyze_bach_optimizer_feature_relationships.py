@@ -162,6 +162,16 @@ def build_track_table(canonical_dir: Path) -> pd.DataFrame:
     joined = joined.merge(consensus, on="stim_name", how="left", suffixes=("", "_consensus"))
     joined = joined.merge(mir, on=["stim_name", "wtc_code"], how="left", suffixes=("", "_mir"))
     joined = joined.merge(midi, on=["stim_name", "wtc_code"], how="left", suffixes=("", "_midi"))
+    # These columns are exact duplicates of an earlier-merged column (same optimizer
+    # run, reported through a second file/table) and add no independent information.
+    exact_duplicates = {
+        "n_participants_split": "n_participants",
+        "crowd_n_beats": "n_optimized_beats",
+        "diag_bimodal_score": "bimodal_score",
+    }
+    drop_cols = [c for c in exact_duplicates if c in joined.columns]
+    if drop_cols:
+        joined = joined.drop(columns=drop_cols)
     return joined
 
 

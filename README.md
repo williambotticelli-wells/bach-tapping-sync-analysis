@@ -49,4 +49,4 @@ musical onset in the synchronized audio/MIDI packet.
 
 Across time bins, denser/active MIDI texture tends to coincide with higher tapping concentration, while broader/brighter spectral texture tends to coincide with lower tapping concentration. This is consistent across four time-resolved tapping targets but should be treated as exploratory.
 
-At the 100 ms MIDI/tapping resolution, the strongest within-track associations are positive but small: active-note count and MIDI onset count track local tap concentration. These vectors are best treated as alignment-ready inputs for emotion/ECoG models rather than stand-alone paper-level evidence.
+At the 100 ms MIDI/tapping resolution, the strongest within-track associations are positive but small: active-note count and MIDI onset count track local tap concentration. These vectors are best treated as alignment-ready inputs for emotion/ECoG models.

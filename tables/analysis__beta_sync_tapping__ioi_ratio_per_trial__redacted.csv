@@ -1,4 +1,4 @@
-trial_row,stim_name,mean_ioi_s,consensus_median_ioi_s,participant_ioi_to_consensus_ioi_ratio,perceived_tempo_bpm,cv_ioi_pct,wtc_code,manifest_wtc_code,beta_list,beta_perf,beta_score
+trial_row,stim_name,mean_ioi_s,consensus_median_ioi_s,participant_ioi_to_consensus_ioi_ratio,perceived_tempo_bpm,trial_cv_ioi_pct,wtc_code,manifest_wtc_code,beta_list,beta_perf,beta_score
 0,track12,0.6509982738780208,0.625,1.0415972382048333,92.16614299539964,17.224369534116995,wtc1p04,wtc1p04,2,-0.3545,-0.5101
 1,track1,0.4340131578947368,0.3999999999999986,1.085032894736846,138.24465666211916,14.76892240531083,wtc1p15,wtc1p15,2,-0.2186,-0.2511
 2,track4,0.4439482228298018,0.5225000000000044,0.8496616704876517,135.1508957903914,41.865903732476184,wtc2f06,wtc2f06,1,-0.9994,-0.9258

@@ -213,8 +213,9 @@ def build_window_optimizer_metrics(canonical_dir: Path, windows: pd.DataFrame) -
                 "window_start_s": w0,
                 "window_end_s": w1,
                 "window_center_s": float(win["window_center_s"]),
-                "optimizer_peak_count": int(peak_vals.size),
-                "optimizer_beat_count": int(beat_vals.size),
+                # These windows are always exactly 1 s wide, so "count" would be
+                # an exact duplicate of the "_density_per_s" columns below; only
+                # the density columns (used as regression targets) are kept.
                 "optimizer_peak_density_per_s": float(peak_vals.size / duration),
                 "optimizer_beat_density_per_s": float(beat_vals.size / duration),
                 "optimizer_peak_coverage_70ms": float(np.nanmean(dists <= 0.070)) if dists.size else np.nan,

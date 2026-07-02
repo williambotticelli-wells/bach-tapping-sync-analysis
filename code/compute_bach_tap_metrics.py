@@ -173,7 +173,6 @@ def trial_metrics(
             "mean_ioi_s": mean_ioi,
             "perceived_tempo_bpm": tempo,
             "sd_ioi_s": sd_ioi,
-            "cv_ioi_pct": cv,
             "trial_cv_ioi_pct": cv,
             "median_ioi_s": float(np.median(iois)) if iois.size else np.nan,
             "first_tap_s": float(taps[0]) if taps.size else np.nan,
@@ -396,7 +395,7 @@ def ioi_ratio_table(trial_df: pd.DataFrame, consensus_summary: pd.DataFrame) -> 
             "consensus_median_ioi_s",
             "participant_ioi_to_consensus_ioi_ratio",
             "perceived_tempo_bpm",
-            "cv_ioi_pct",
+            "trial_cv_ioi_pct",
         ]
     ]
 

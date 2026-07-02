@@ -71,14 +71,17 @@ genuinely different source file, but you only need to read one of each pair:
   (track-level coherence table only): identical because no participant taps
   twice in the same 100 ms bin. Prefer `max_unique_participants_per_100ms_bin`.
 
-Two other duplicate-by-construction columns were removed outright rather than
-kept: `mir100_rms` (bit-identical to `audio100_rms` — RMS on a fixed 100 ms
-window has no algorithm-specific choices, so the Python and MATLAB pipelines
-agree exactly) and `mtb_note_onset_density_per_s` (an exact rescaling of
-`mtb_n_note_onsets` by the fixed window size). The chroma-strength columns were
-also dropped from the time-binned multimodal table because they require
-`librosa`, which was unavailable when these tables were built, and were 100%
-missing.
+Several other duplicate-by-construction columns were removed outright rather
+than kept: `mir100_rms` (bit-identical to `audio100_rms` — RMS on a fixed
+100 ms window has no algorithm-specific choices, so the Python and MATLAB
+pipelines agree exactly), `mtb_note_onset_density_per_s` (an exact rescaling of
+`mtb_n_note_onsets` by the fixed window size), `optimizer_peak_count`/
+`optimizer_beat_count` (the optimizer time-binned windows are always exactly
+1 s, so the `_density_per_s` columns are identical and are kept instead), and
+`cv_ioi_pct` (a literal duplicate of `trial_cv_ioi_pct` in the per-trial IOI
+tables). The chroma-strength columns were also dropped from the time-binned
+multimodal table because they require `librosa`, which was unavailable when
+these tables were built, and were 100% missing.
 
 ## Code
 

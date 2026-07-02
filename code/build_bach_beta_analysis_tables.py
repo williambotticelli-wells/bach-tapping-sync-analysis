@@ -233,7 +233,6 @@ def build_midi_features(manifest: pd.DataFrame, window_s: float, hop_s: float) -
                 "stim_name": row["stim_name"],
                 "wtc_code": row["wtc_code"],
                 "n_note_onsets": int(len(sub)),
-                "note_onset_density_per_s": float(len(sub) / window_s) if window_s > 0 else np.nan,
                 "mean_pitch": float(sub["pitch"].mean()) if len(sub) else np.nan,
                 "std_pitch": float(sub["pitch"].std(ddof=1)) if len(sub) > 1 else np.nan,
                 "mean_velocity": float(sub["velocity"].mean()) if len(sub) else np.nan,
@@ -292,9 +291,6 @@ def build_tapping_metrics(manifest: pd.DataFrame, window_s: float, hop_s: float)
         istc_cols = [
             "stim_name",
             "istc_mean_max_unique_per_sec",
-            "tap_count_mean_max_per_sec",
-            "max_tap_count_per_100ms_bin",
-            "max_unique_participants_per_100ms_bin",
             "n_participants",
         ]
         consensus_with_meta = consensus_with_meta.merge(
@@ -316,9 +312,6 @@ def join_multimodal(audio_bins: pd.DataFrame, midi_bins: pd.DataFrame, istc_time
             "window_end_s",
             "window_center_s",
             "istc_mean_max_unique_per_sec",
-            "tap_count_mean_max_per_sec",
-            "max_unique_participants_per_100ms_bin",
-            "max_tap_count_per_100ms_bin",
             "n_participants",
         ]
         joined = joined.merge(istc_time[[col for col in istc_cols if col in istc_time.columns]], on=["stim_name", "window_start_s", "window_end_s", "window_center_s"], how="left")
@@ -362,7 +355,7 @@ def same_piece_summary(manifest: pd.DataFrame, consensus: pd.DataFrame, joined: 
     if not joined.empty:
         feature_cols = [
             col for col in joined.columns
-            if col.endswith("_mean") or col in {"note_onset_density_per_s", "istc_mean_max_unique_per_sec"}
+            if col.endswith("_mean") or col in {"n_note_onsets", "istc_mean_max_unique_per_sec"}
         ]
         piece_windows = joined.groupby(["wtc_code", "window_center_s"], dropna=False)[feature_cols].mean(numeric_only=True).reset_index()
         piece_windows.to_csv(MULTIMODAL_OUT / "same_piece_window_feature_means.csv", index=False)

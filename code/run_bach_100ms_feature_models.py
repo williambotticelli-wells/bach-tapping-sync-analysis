@@ -23,15 +23,11 @@ OUT_DIR = BACH_ROOT / "analysis" / "beta_sync_100ms_models"
 
 TARGETS_100MS = [
     "tap_count_100ms",
-    "unique_tapper_count_100ms",
-    "tap_density_per_s",
 ]
 
 FEATURES_100MS = [
     "midi_note_onset_count_100ms",
-    "midi_note_onset_density_per_s",
     "midi_active_note_count",
-    "midi_active_note_density_per_s",
     "midi_pitch_min",
     "midi_pitch_max",
     "midi_pitch_range",
@@ -42,14 +38,10 @@ FEATURES_100MS = [
     "midi_velocity_range",
     "midi_velocity_mean",
     "midi_velocity_std",
-    "midi_dynamic_range",
 ]
 
 TRACK_TARGETS = [
     "istc_mean_max_unique_per_sec",
-    "tap_count_mean_max_per_sec",
-    "max_unique_participants_per_100ms_bin",
-    "max_tap_count_per_100ms_bin",
 ]
 
 
@@ -208,7 +200,7 @@ def write_summary(global_corr: pd.DataFrame, within_corr: pd.DataFrame, bayes: p
     lines = [
         "# Bach 100 ms Feature Modeling Summary",
         "",
-        "These are screening analyses for MIDI/MIR/tapping feature relationships.",
+        "These are screening analyses for MIDI/MIR/tapping feature relationships. Redundant fixed-bin rescalings are omitted, so `tap_count_100ms` is the single 100 ms tapping-concentration target.",
         "",
         "## 100 ms Within-Track Signals",
         "",

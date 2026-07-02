@@ -29,9 +29,6 @@ OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 TARGETS = [
     "istc_mean_max_unique_per_sec",
-    "tap_count_mean_max_per_sec",
-    "max_unique_participants_per_100ms_bin",
-    "max_tap_count_per_100ms_bin",
 ]
 
 FEATURE_GROUPS = {
@@ -52,12 +49,10 @@ FEATURE_GROUPS = {
     ],
     "symbolic_density_complexity": [
         "n_note_onsets",
-        "note_onset_density_per_s",
         "active_note_count",
         "approx_polyphony",
         "cv_midi_ioi",
         "mtb_n_note_onsets",
-        "mtb_note_onset_density_per_s",
         "mtb_active_note_count",
         "mtb_approx_polyphony",
         "mtb_ioi_cv",
@@ -79,7 +74,7 @@ MODEL_FEATURES = [
     "mir_rms",
     "mir_brightness",
     "mir_roughness",
-    "note_onset_density_per_s",
+    "n_note_onsets",
     "approx_polyphony",
     "cv_midi_ioi",
     "mtb_ioi_cv",

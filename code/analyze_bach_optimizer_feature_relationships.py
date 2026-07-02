@@ -47,8 +47,6 @@ WINDOW_TARGETS = [
     "optimizer_peak_coverage_70ms",
     "optimizer_peak_to_grid_median_abs_error_ms",
     "istc_mean_max_unique_per_sec",
-    "max_unique_participants_per_100ms_bin",
-    "max_tap_count_per_100ms_bin",
 ]
 
 META_COLS = {
@@ -234,6 +232,10 @@ def feature_columns_for_windows(df: pd.DataFrame) -> list[str]:
         "beta_score",
         "beta_list",
         "tap_count_mean_max_per_sec",
+        "max_unique_participants_per_100ms_bin",
+        "max_tap_count_per_100ms_bin",
+        "note_onset_density_per_s",
+        "mtb_note_onset_density_per_s",
         "optimizer_peak_count",
         "optimizer_beat_count",
         "optimizer_peak_to_grid_mean_abs_error_ms",

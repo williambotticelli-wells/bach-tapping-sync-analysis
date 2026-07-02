@@ -65,9 +65,7 @@ def summarize_midi(notes: pd.DataFrame, bin_start: float, bin_end: float) -> dic
     velocity_series = active_notes["velocity"] if not active_notes.empty else onset_notes["velocity"]
     out = {
         "midi_note_onset_count_100ms": int(len(onset_notes)),
-        "midi_note_onset_density_per_s": float(len(onset_notes) / BIN_S),
         "midi_active_note_count": int(len(active_notes)),
-        "midi_active_note_density_per_s": float(len(active_notes) / BIN_S),
         "midi_pitch_min": np.nan,
         "midi_pitch_max": np.nan,
         "midi_pitch_range": np.nan,
@@ -78,7 +76,6 @@ def summarize_midi(notes: pd.DataFrame, bin_start: float, bin_end: float) -> dic
         "midi_velocity_range": np.nan,
         "midi_velocity_mean": np.nan,
         "midi_velocity_std": np.nan,
-        "midi_dynamic_range": np.nan,
     }
     if len(pitch_series):
         pitches = pd.to_numeric(pitch_series, errors="coerce").dropna()
@@ -103,7 +100,6 @@ def summarize_midi(notes: pd.DataFrame, bin_start: float, bin_end: float) -> dic
                     "midi_velocity_range": v_range,
                     "midi_velocity_mean": float(velocities.mean()),
                     "midi_velocity_std": float(velocities.std(ddof=1)) if len(velocities) > 1 else 0.0,
-                    "midi_dynamic_range": v_range,
                 }
             )
     return out
@@ -113,14 +109,10 @@ def summarize_taps(taps: pd.DataFrame, bin_start: float, bin_end: float) -> dict
     if taps.empty:
         return {
             "tap_count_100ms": 0,
-            "unique_tapper_count_100ms": 0,
-            "tap_density_per_s": 0.0,
         }
     sub = taps[(taps["tap_time_s"] >= bin_start) & (taps["tap_time_s"] < bin_end)]
     return {
         "tap_count_100ms": int(len(sub)),
-        "unique_tapper_count_100ms": int(sub["participant_key"].nunique()) if not sub.empty else 0,
-        "tap_density_per_s": float(len(sub) / BIN_S),
     }
 
 
@@ -174,9 +166,8 @@ def main() -> None:
         "These tables use the beta-sync first-musical-onset timebase (`t=0`).\n\n"
         "- `bach_100ms_midi_tapping_feature_vectors.csv`: one row per 100 ms bin.\n"
         "- `bach_100ms_feature_vector_inventory.csv`: per-track row counts and coverage.\n\n"
-        "MIDI features include note onset density, active note count, pitch min/max/range,\n"
-        "and velocity/dynamic range. Tapping features include total tap count and unique\n"
-        "tapper count per 100 ms bin.\n",
+        "MIDI features include note onset count, active note count, pitch min/max/range,\n"
+        "and velocity range. Tapping features include total tap count per 100 ms bin.\n",
         encoding="utf-8",
     )
     print(OUT_DIR / "bach_100ms_midi_tapping_feature_vectors.csv")

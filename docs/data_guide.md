@@ -15,8 +15,9 @@
   - Primary time-binned table for joining music features with tapping coherence.
 - `tables/analysis__beta_sync_100ms__bach_100ms_midi_tapping_feature_vectors.csv`
   - 100 ms feature-vector table for emotion/ECoG joins. Includes MIDI note onset
-    density, active-note density, pitch min/max/range, velocity/dynamic range,
-    tap count, and unique tapper count.
+    count, active-note count, pitch min/max/range, velocity range, and tap count.
+    Fixed-bin density rescalings and near-identical tapping variants are omitted
+    from the cleaned screening outputs.
 - `tables/analysis__beta_sync_100ms_models__bach_100ms_within_track_correlations.csv`
   - Within-track 100 ms correlation screen relating local MIDI features to local
     tap concentration.
@@ -36,7 +37,8 @@
 ## Preliminary Results
 
 - `tables/analysis__beta_sync_hypotheses__feature_coherence_correlations.csv`
-  - Time-binned feature/coherence screens.
+  - Time-binned feature/coherence screen for the representative tapping-
+    concentration target.
 - `tables/analysis__beta_sync_hypotheses__whole_piece_mir_feature_correlations.csv`
   - Whole-piece MIR feature/coherence screens.
 - `tables/analysis__beta_globaltap_canonical__optimizer_time_binned_within_track_correlations.csv`

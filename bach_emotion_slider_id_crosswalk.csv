@@ -1,0 +1,25 @@
+stimulus_id,slider_wtc_code,oname,stim_name,wtc_code,manifest_wtc_code,beta_piece_override_applied,manual_onset_s,onset_source,sync_status
+bach_01,wtc1p17,cut-MIDI-Unprocessed_13_R1_2008_01-04_ORIG_MID--AUDIO_13_R1_2008_wav--1.wav,track24,wtc1p17,wtc1p17,False,1.09241666666667,review_onset,midi_pending_confirmation
+bach_02,wtc1p17,cut-ORIG-MIDI_01_7_6_13_Group__MID--AUDIO_04_R1_2013_wav--1.wav,track14,wtc1p17,wtc1p17,False,0.988395833333333,review_onset,midi_pending_confirmation
+bach_03,wtc2f06,cut-MIDI-Unprocessed_065_PIANO065_MID--AUDIO-split_07-07-17_Piano-e_3-01_wav--1.wav,track3,wtc2f06,wtc2f06,False,1.98908333333333,review_onset,midi_pending_confirmation
+bach_04,wtc2f06,cut-MIDI-Unprocessed_XP_09_R1_2004_01-02_ORIG_MID--AUDIO_09_R1_2004_01_Track01_wav.wav,track4,wtc2f06,wtc2f06,False,1.97366666666667,review_onset,midi_pending_confirmation
+bach_05,wtc2p01,cut-MIDI-Unprocessed_R1_D2-13-20_mid--AUDIO-from_mp3_17_R1_2015_wav--1.wav,track18,wtc2p01,wtc2p01,False,0.9896041666666668,review_onset,midi_pending_confirmation
+bach_06,wtc2p01,cut-MIDI-Unprocessed_R1_D2-13-20_mid--AUDIO-from_mp3_20_R1_2015_wav--1.wav,track5,wtc2p01,wtc2p01,False,0.9955208333333329,review_onset,midi_pending_confirmation
+bach_07,wtc2p24,cut-MIDI-Unprocessed_06_R1_2008_01-04_ORIG_MID--AUDIO_06_R1_2008_wav--1.wav,track20,wtc2p24,wtc2p24,False,1.0476875,review_onset,midi_pending_confirmation
+bach_08,wtc2p24,cut-ORIG-MIDI_03_7_6_13_Group__MID--AUDIO_10_R1_2013_wav--1.wav,track7,wtc2p24,wtc2p24,False,1.050375,review_onset,midi_pending_confirmation
+bach_09,wtc1p03,cut-MIDI-Unprocessed_02_R1_2008_01-05_ORIG_MID--AUDIO_02_R1_2008_wav--1.wav,track19,wtc1p03,wtc1p03,False,1.03791666666667,review_onset,midi_pending_confirmation
+bach_10,wtc1p03,cut-ORIG-MIDI_01_7_7_13_Group__MID--AUDIO_12_R1_2013_wav--1.wav,track15,wtc1p03,wtc1p03,False,0.99075,review_onset,midi_pending_confirmation
+bach_11,wtc1p04,cut-MIDI-Unprocessed_044_PIANO044_MID--AUDIO-split_07-06-17_Piano-e_1-04_wav--1.wav,track6,wtc1p04,wtc1p04,False,0.986625,review_onset,midi_pending_confirmation
+bach_12,wtc1p04,cut-MIDI-Unprocessed_Recital4_MID--AUDIO_04_R1_2018_wav--1.wav,track12,wtc1p04,wtc1p04,False,0.9890625,review_onset,midi_pending_confirmation
+bach_13,wtc1p15,cut-MIDI-Unprocessed_18_R1_2008_01-04_ORIG_MID--AUDIO_18_R1_2008_wav--1.wav,track13,wtc1p15,wtc1p15,False,1.01952083333333,review_onset,midi_pending_confirmation
+bach_14,wtc1p15,cut-ORIG-MIDI_02_7_6_13_Group__MID--AUDIO_07_R1_2013_wav--1.wav,track1,wtc1p15,wtc1p15,False,1.06510416666667,review_onset,midi_pending_confirmation
+bach_15,wtc2f07,cut-MIDI-Unprocessed_061_PIANO061_MID--AUDIO-split_07-07-17_Piano-e_2-05_wav--1.wav,track17,wtc2f07,wtc2f07,False,1.99295833333333,review_onset,midi_pending_confirmation
+bach_16,wtc2f07,cut-MIDI-Unprocessed_13_R1_2011_MID--AUDIO_R1-D5_02_Track02_wav.wav,track22,wtc2f07,wtc2f07,False,2.03095833333333,review_onset,midi_pending_confirmation
+bach_17,wtc1f03,cut-MIDI-Unprocessed_049_PIANO049_MID--AUDIO-split_07-06-17_Piano-e_2-06_wav--1 2.wav,track9,wtc1f03,wtc1p03,True,1.972,auto_deployed_override_confirmed_via_onset_crosscheck_2026_07_02,confirmed_via_onset_crosscheck_2026_07_02
+bach_18,wtc1f03,cut-MIDI-Unprocessed_24_R1_2011_MID--AUDIO_R1-D9_08_Track08_wav 2.wav,track8,wtc1f03,wtc1p03,True,1.97,auto_deployed_override_confirmed_via_onset_crosscheck_2026_07_02,confirmed_via_onset_crosscheck_2026_07_02
+bach_19,wtc1f05,cut-MIDI-Unprocessed_053_PIANO053_MID--AUDIO-split_07-06-17_Piano-e_3-04_wav--1.wav,track21,wtc1f05,wtc1f05,False,1.95889583333333,review_onset,midi_pending_confirmation
+bach_20,wtc1f05,cut-MIDI-Unprocessed_18_R1_2011_MID--AUDIO_R1-D7_07_Track07_wav.wav,track16,wtc1f05,wtc1f05,False,1.222125,review_onset,midi_pending_confirmation
+bach_21,wtc1p03,cut-MIDI-Unprocessed_049_PIANO049_MID--AUDIO-split_07-06-17_Piano-e_2-06_wav--1.wav,track10,wtc1p03,wtc1p03,False,0.9642708333333329,manual_correction,midi_pending_confirmation
+bach_22,wtc1p03,cut-MIDI-Unprocessed_24_R1_2011_MID--AUDIO_R1-D9_08_Track08_wav.wav,track23,wtc1p03,wtc1p03,False,0.974604166666667,manual_correction,midi_pending_confirmation
+bach_23,wtc1p15,cut-MIDI-Unprocessed_15_R1_2008_01-04_ORIG_MID--AUDIO_15_R1_2008_wav--1.wav,track11,wtc1p15,wtc1p15,False,1.08329166666667,review_onset,midi_pending_confirmation
+bach_24,wtc1p15,cut-MIDI-Unprocessed_R1_D2-21-22_mid--AUDIO-from_mp3_21_R1_2015_wav--1.wav,track2,wtc1p15,wtc1p15,False,0.9949583333333328,review_onset,midi_pending_confirmation

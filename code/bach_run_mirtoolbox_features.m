@@ -9,13 +9,15 @@ bach_root = fileparts(fileparts(mfilename('fullpath')));
 manifest_path = fullfile(bach_root, 'alignment', 'beta_midi_sync_draft', 'bach_beta_midi_sync_manifest.csv');
 out_dir = fullfile(bach_root, 'analysis', 'matlab_toolbox_features');
 mir_root = fullfile(bach_root, 'MIRtoolbox1.8.2');
-zohar_scripts = fullfile(bach_root, 'for_zohar_scripts');
+% Private-workspace helper-script folder (not part of this collaborator
+% package); on-disk directory name is a private workspace convention.
+external_helper_scripts = fullfile(bach_root, 'for_zohar_scripts');
 
 if ~exist(out_dir, 'dir')
     mkdir(out_dir);
 end
 addpath(genpath(mir_root));
-addpath(genpath(zohar_scripts));
+addpath(genpath(external_helper_scripts));
 
 manifest = readtable(manifest_path, 'TextType', 'string', 'VariableNamingRule', 'preserve', 'Delimiter', ',');
 window_s = 1.0;

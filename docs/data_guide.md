@@ -33,12 +33,27 @@
     local tap concentration.
 - `tables/analysis__beta_sync_100ms_models__bach_100ms_within_track_bayesian_ridge_screen.csv`
   - Bayesian ridge direction screen using the same 100 ms feature vectors.
+- `tables/analysis__beta_sync_100ms_models__bach_100ms_tapping_mixedlm_summary.csv`
+  - Joint linear mixed-effects regression (all MIDI/acoustic features together,
+    random intercept per track) for local tap concentration -- see
+    `docs/bach_100ms_tapping_joint_and_bayesian_models_summary.md`.
+- `tables/analysis__beta_sync_100ms_models__bach_tapping_negbinom_hierarchical_bayesian_posterior_summary.csv`
+  - Hierarchical Bayesian (negative-binomial, track random intercept, NUTS)
+    model of the same question, fit on the raw count outcome; see the same doc.
 - `tables/analysis__beta_sync_tapping__istc_time_resolved.csv`
   - Time-resolved tapping coherence.
 - `tables/analysis__beta_sync_tapping__istc_per_track.csv`
   - Per-track tapping coherence summary.
 - `tables/analysis__beta_sync_tapping__kde_consensus_peaks.csv`
   - Human tapping consensus peak times.
+- `tables/analysis__beta_sync_tapping__raw_tap_events_per_trial__redacted.csv`
+  - Raw tap-event timestamps per trial (one row per trial, `taps_s` is a
+    JSON-encoded list of tap times on the `t=0`-at-first-onset clock). The
+    only tapping table that is not a derived summary. `trial_row` matches
+    `trial_ioi_metrics__redacted.csv` / `ioi_ratio_per_trial__redacted.csv`
+    exactly (same redaction convention: no `participant_uid`/`audio_filename`).
+    Built by `code/build_bach_raw_tap_events_export.py` (requires the full
+    Bach workspace layout to rebuild; the checked-in CSV does not).
 - `tables/analysis__matlab_toolbox_features__mirtoolbox_binned_features.csv`
   - Time-binned MIRToolbox features.
 - `tables/analysis__matlab_toolbox_features__miditoolbox_binned_features.csv`
@@ -58,6 +73,72 @@
   - Short summary of the 100 ms correlation, regression, and Bayesian ridge screens.
 - `docs/bach_100ms_audio_feature_modeling_summary.md`
   - Short summary of the 100 ms acoustic/MIR-style feature screen.
+- `docs/bach_100ms_tapping_joint_and_bayesian_models_summary.md`
+  - Joint mixed-effects and hierarchical Bayesian follow-up on the above two
+    screens: local tap-count effects that look independent in the univariate
+    screens turn out to be collinear "density" proxies once modeled jointly.
+
+## Emotion Tables
+
+Continuous emotion-slider data (N=201 approved Prolific participants,
+`happy`/`sad`/`calm`/`energetic`, 1 locked emotion/participant, 12 of 24
+stimuli each). See `docs/emotion_integration_summary.md` for the full join
+methodology, time-alignment/resampling details, and headline findings; this
+section is the column-level index.
+
+- `bach_emotion_slider_id_crosswalk.csv` (repo root)
+  - Stimulus-level crosswalk: `stimulus_id` (slider `bach_XX`) <->
+    `stim_name` (`trackN`) <-> `wtc_code` <-> `manual_onset_s`. Built by
+    `code/build_bach_emotion_id_crosswalk.py`.
+- `tables/analysis__beta_sync_emotion__bach_100ms_emotion_feature_vectors.csv`
+  - 100 ms emotion rating vectors, aggregated across participants. One row
+    per `(stim_name, emotion_term, bin_index)`. Join on `stim_name`,
+    `wtc_code`, and **`bin_index`** (not `bin_center_s` -- see float-drift
+    note below). Columns: `rating_mean`, `rating_sd`, `rating_se`,
+    `n_ratings`, `n_participants`.
+- `tables/analysis__beta_sync_emotion__bach_100ms_full_multimodal_with_emotion.csv`
+  - The above joined onto `bach_100ms_audio_midi_tapping_feature_vectors.csv`.
+    Long format on `emotion_term` (MIDI/audio/tap columns repeat across each
+    track's up-to-4 emotion rows per bin, since those don't depend on
+    emotion). Use this when you want features + emotion in one table.
+- `tables/analysis__beta_sync_emotion__bach_track_level_emotion_tapping_mir_midi_summary.csv`
+  - Song-wide: one row per `(stim_name, emotion_term)`, n=96. Rating is the
+    across-participant mean of each participant's own per-trial mean rating.
+    Joined onto the existing whole-piece MIR/MIDI + `istc_per_track`
+    columns (all 204 columns from
+    `bach_track_level_mir_midi_coherence_table.csv` are carried over).
+- `tables/analysis__beta_sync_emotion__bach_participant_trial_level_table__redacted.csv`
+  - Participant-trial level, n=2,419 (206 participants). One row per
+    participant x trial: rating summary stats, trial metadata (duration,
+    familiarity, enjoyment, difficulty, trial order), emotion_term, and a
+    compact set of the track's tapping/whole-piece features (not all 204 --
+    see the script for the exact list). `participant_id` is the
+    already-anonymized PsyNet-internal id (export used `--anonymize both`),
+    consistent with this repo's redacted-participant-table convention.
+- `tables/analysis__beta_sync_emotion__bach_raw_emotion_slider_samples.csv.gz`
+  - Raw, native-resolution (250 ms) slider samples: one row per
+    (participant, trial, sample), n=1,021,641, gzip-compressed (~14 MB). This
+    is the actual data every other emotion table in this repo aggregates or
+    bins -- use it if you need a different bin width than 100 ms, or want to
+    inspect individual response trajectories. Adds `stim_name`, `wtc_code`,
+    and `t_sync` (`= time_s - manual_onset_s`, the same aligned clock used
+    everywhere else) via the crosswalk; all other columns are exactly what
+    the PsyNet export produced. `participant_id` is the same anonymized
+    PsyNet-internal id as above (same underlying `--anonymize both` export);
+    no demographic, geographic, or free-text fields are present. Built by
+    `code/export_bach_raw_emotion_slider_samples.py` (needs the
+    non-shipped `scratch/emotion_source_data/` flat export to rebuild).
+- `tables/analysis__beta_sync_emotion_models__*`
+  - Correlation/regression/Bayesian screens and summaries built from the
+    tables above; see `docs/emotion_integration_summary.md` for what each
+    one answers and the headline results.
+
+**Float-precision note (pre-existing, not introduced by the emotion
+integration)**: `bach_100ms_midi_tapping_feature_vectors.csv` and
+`bach_100ms_audio_midi_tapping_feature_vectors.csv` carry ~1e-16 to ~1e-9
+floating-point drift on `bin_center_s` for ~20 of 24,816 bins. Join 100 ms
+tables on `bin_index` (exact int), not `bin_center_s`, to avoid silently
+dropping ~19% of rows on an exact-float join.
 
 ## Known Duplicate Columns
 

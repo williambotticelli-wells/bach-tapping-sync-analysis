@@ -62,10 +62,14 @@ def parse_float(value: object, default: float = 0.0) -> float:
 
 
 def choose_audio_path(row: pd.Series, prefer: str) -> Path | None:
+    # "alt_source" is a second-source WAV column on the private alignment
+    # manifest (kept as a fallback alias below for manifests built before
+    # that column was renamed for this collaborator package).
+    alt_source_cols = ["alt_source_wav_path", "rena_wav_path"]
     columns = (
-        ["rena_wav_path", "collective_wav_path"]
-        if prefer == "rena"
-        else ["collective_wav_path", "rena_wav_path"]
+        alt_source_cols + ["collective_wav_path"]
+        if prefer == "alt_source"
+        else ["collective_wav_path"] + alt_source_cols
     )
     for col in columns:
         path = Path(str(row.get(col, "")).strip()).expanduser()
@@ -186,7 +190,7 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--manifest", default=str(DEFAULT_MANIFEST))
     ap.add_argument("--out-dir", default=str(DEFAULT_OUT))
-    ap.add_argument("--prefer", choices=["collective", "rena"], default="collective")
+    ap.add_argument("--prefer", choices=["collective", "alt_source"], default="collective")
     ap.add_argument("--sr", type=int, default=22050)
     ap.add_argument("--hop-ms", type=float, default=25.0)
     ap.add_argument("--frame-ms", type=float, default=100.0)

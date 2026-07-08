@@ -1,0 +1,17 @@
+# Python environment used to build and validate the tables/models in this
+# repository (Python 3.13). Install with:
+#   python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt
+#
+# Only needed to rerun code/*.py; the checked-in tables/, plots/, and
+# audio_midi_t0/ outputs do not require any of this to use directly.
+# The three code/*.m scripts additionally require MATLAB with MIRToolbox and
+# MIDI Toolbox on the path -- see docs/data_guide.md.
+
+pandas==3.0.3
+numpy==2.4.6
+scipy==1.18.0
+scikit-learn==1.9.0
+statsmodels==0.14.6
+matplotlib==3.11.0
+pymc==6.0.1
+arviz==1.2.0

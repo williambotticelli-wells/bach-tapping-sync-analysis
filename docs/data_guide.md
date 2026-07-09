@@ -78,6 +78,34 @@
     screens: local tap-count effects that look independent in the univariate
     screens turn out to be collinear "density" proxies once modeled jointly.
 
+## Same-Piece Performance-Comparison Tables
+
+There are only **10 unique compositions** among the 24 tracks, not 12 (2 of
+the stimulus set's nominal 12 "list slots" turned out to be repeat
+performances of a piece used elsewhere rather than new compositions --
+verified by comparing raw MIDI pitch sequences). 8 compositions have exactly
+2 performances; 2 (`wtc1p03`, `wtc1p15`) have 4. See
+`docs/bach_same_piece_performance_comparison_summary.md` for the full
+verification and results.
+
+- `tables/analysis__beta_sync_performance_pairs__bach_same_piece_performance_long.csv`
+  - One row per track: whole-piece MIR/MIDI features, tapping coherence, and
+    each emotion's track-level mean rating, plus `n_performances_this_piece`.
+- `tables/analysis__beta_sync_performance_pairs__bach_same_piece_icc_variance_decomposition.csv`
+  - What fraction of total between-track variance in each outcome is
+    between-piece (composition) vs. within-piece-between-performance.
+- `tables/analysis__beta_sync_performance_pairs__bach_same_piece_mixedlm_summary.csv`
+  - Piece-random-intercept mixed regression (n=24, 10 pieces): do a specific
+    performance's tempo/dynamics/texture predict its coherence/ratings,
+    controlling for which piece it is.
+- `tables/analysis__beta_sync_performance_pairs__bach_same_piece_paired_contrasts.csv` / `..._paired_delta_correlations.csv`
+  - The 8 clean 2-performance pieces only: within-pair deltas (faster-tempo
+    performance minus slower) and their cross-piece correlations.
+- `tables/analysis__beta_sync_performance_pairs__bach_four_performance_pieces_supplement.csv`
+  - Descriptive within-piece spread for the 2 four-performance pieces
+    (kept separate from the n=8 paired analysis to avoid double-counting
+    non-independent pairs).
+
 ## Emotion Tables
 
 Continuous emotion-slider data (N=201 approved Prolific participants,

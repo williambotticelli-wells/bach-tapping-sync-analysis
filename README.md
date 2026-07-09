@@ -101,6 +101,10 @@ At the 100 ms MIDI/tapping resolution, the strongest within-track associations a
 
 A joint mixed-effects model and a hierarchical Bayesian (negative-binomial) model of the same 100 ms tap-count outcome -- both with an explicit per-track random effect -- refine this: once note density, pitch, velocity, and spectral features are modeled together instead of one at a time, active-note count and onset count are no longer distinguishable from zero, while pitch height (positive) and spectral bandwidth (negative) remain credible independent predictors. See `docs/bach_100ms_tapping_joint_and_bayesian_models_summary.md`.
 
+## Same-piece, between-performance comparisons
+
+The 24 tracks are actually only **10 unique compositions** (8 performed twice, 2 performed 4 times -- not 12 pieces x 2, which was the nominal stimulus-list design before 2 slots turned out to be repeat performances; verified via raw MIDI pitch-sequence matching). Holding composition fixed this way, performance identity (tempo/dynamics/texture choices) explains 0-90%+ of variance depending on the outcome -- far more for tempo/dynamics/brightness than for tapping coherence or the emotion ratings, which are more piece- (composition-) dominated, especially `emotion_energetic` (93% piece-level). See `docs/bach_same_piece_performance_comparison_summary.md` for the ICC decomposition, the piece-random-intercept mixed models, and the n=8 paired-performance contrasts.
+
 ## Emotion-slider signal (preliminary; see `docs/emotion_integration_summary.md` for full detail)
 
 Musical features predict emotion ratings robustly and in theoretically

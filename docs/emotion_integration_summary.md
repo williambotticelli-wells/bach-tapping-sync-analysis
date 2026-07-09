@@ -7,18 +7,6 @@ and summarizes the resulting correlational, mixed-effects regression, and
 hierarchical Bayesian analyses. See `docs/data_guide.md` for the table index
 and `docs/data_guide.md#emotion-tables` for column-level detail.
 
-## Source study and this repository's stimuli are two separate studies
-
-The tapping/MIR/MIDI data in this repository (`istc_*`, whole-piece MIR/MIDI
-features) came from a **different study** than the emotion slider (no
-participant overlap, no emotion context during tapping). The two are linked
-only through the **shared stimulus set** (24 performances, 10 unique WTC
-piece codes). Any tapping<->emotion comparison is therefore inherently a
-between-stimulus (n=24) comparison dressed up with participant-level power,
-not a within-participant paired comparison -- this is true even in the
-participant-trial-level table, where every participant who heard a given
-track inherits that track's single tapping-coherence value.
-
 ## Identifier crosswalk
 
 `bach_emotion_slider_id_crosswalk.csv` (repo root) maps the slider's

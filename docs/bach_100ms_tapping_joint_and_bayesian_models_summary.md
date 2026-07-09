@@ -82,8 +82,12 @@ identifiers are not present at this resolution.
 Directionally identical to the MixedLM (pitch height positive, spectral
 bandwidth negative and largest in magnitude, note count negligible once the
 others are included) -- two independent estimation approaches (REML Gaussian
-approximation vs. full Bayesian count model) agree. Trace plot:
-`plots/bach_tapping_negbinom_hierarchical_bayesian_trace.png`.
+approximation vs. full Bayesian count model) agree. MCMC diagnostic (per-chain
+posterior density + trace, confirming clean mixing/convergence):
+`plots/bach_tapping_negbinom_hierarchical_bayesian_trace.png`. Plain-language
+effect-size plot (posterior mean + 94% HDI per feature, this is the picture
+that actually shows the result above):
+`plots/bach_tapping_negbinom_hierarchical_bayesian_forest.png`.
 
 ## Why this was worth doing
 

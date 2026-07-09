@@ -28,7 +28,14 @@ not a repeat of the full per-feature sweep already in
 
 Outputs:
   - tables/analysis__beta_sync_100ms_models__bach_tapping_negbinom_hierarchical_bayesian_posterior_summary.csv
-  - plots/bach_tapping_negbinom_hierarchical_bayesian_trace.png
+  - plots/bach_tapping_negbinom_hierarchical_bayesian_trace.png (MCMC
+    diagnostic: per-chain posterior density + trace side by side. Uses
+    arviz's `plot_trace_dist`, not `plot_trace` -- as of arviz>=1.0's
+    plotting rewrite, `plot_trace` alone only draws the trace/mixing panel
+    and silently drops the density panel, which makes the output look
+    uninformative ("all noise") even though the underlying sampling is fine.)
+  - plots/bach_tapping_negbinom_hierarchical_bayesian_forest.png (the
+    substantive result: posterior mean + 94% HDI for each feature effect.)
 """
 
 from __future__ import annotations
@@ -116,9 +123,16 @@ def main() -> None:
     summary.to_csv(OUT_SUMMARY, index=False)
     print(f"\nWrote {len(summary)} rows to {OUT_SUMMARY}")
 
-    fig = az.plot_trace(idata, var_names=["intercept", "beta", "sigma_track", "alpha"])
+    az.plot_trace_dist(idata, var_names=["intercept", "beta", "sigma_track", "alpha"])
     plt.tight_layout()
     plt.savefig(PLOTS_DIR / "bach_tapping_negbinom_hierarchical_bayesian_trace.png", dpi=100)
+    plt.close("all")
+
+    az.plot_forest(idata, var_names=["beta"], combined=True)
+    plt.axvline(0, color="gray", linestyle="--", linewidth=1)
+    plt.title("Feature effects on 100ms tap concentration (posterior mean, 94% HDI)")
+    plt.tight_layout()
+    plt.savefig(PLOTS_DIR / "bach_tapping_negbinom_hierarchical_bayesian_forest.png", dpi=100)
     plt.close("all")
 
 

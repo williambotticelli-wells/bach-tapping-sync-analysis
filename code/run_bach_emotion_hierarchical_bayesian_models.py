@@ -32,7 +32,16 @@ MCMC hierarchical model per feature.
 
 Outputs:
   - tables/analysis__beta_sync_emotion_models__bach_emotion_ordinal_bayesian_posterior_summary.csv
-  - plots/bach_emotion_ordinal_bayesian_trace_<emotion>.png (diagnostic traces)
+  - plots/bach_emotion_ordinal_bayesian_trace_<emotion>.png (MCMC diagnostic:
+    per-chain posterior density + trace side by side, for the feature-effect
+    and variance-component parameters. Uses arviz's `plot_trace_dist`, not
+    `plot_trace` -- as of arviz>=1.0's plotting rewrite, `plot_trace` alone
+    only draws the trace/mixing panel and silently drops the density panel,
+    which makes the output look uninformative ("all noise") even though the
+    underlying sampling is fine.)
+  - plots/bach_emotion_ordinal_bayesian_forest_<emotion>.png (the
+    substantive result: posterior mean + 94% HDI for each feature effect,
+    i.e. what the trace plot's "beta" rows are actually estimating.)
 """
 
 from __future__ import annotations
@@ -145,9 +154,16 @@ def main() -> None:
         print(summary[["term", "mean", "sd"] + hdi_cols + ["r_hat"]].to_string(index=False))
         all_summaries.append(summary)
 
-        fig = az.plot_trace(idata, var_names=["beta", "sigma_track", "sigma_participant"])
+        az.plot_trace_dist(idata, var_names=["beta", "sigma_track", "sigma_participant"])
         plt.tight_layout()
         plt.savefig(PLOTS_DIR / f"bach_emotion_ordinal_bayesian_trace_{emotion}.png", dpi=100)
+        plt.close("all")
+
+        az.plot_forest(idata, var_names=["beta"], combined=True)
+        plt.axvline(0, color="gray", linestyle="--", linewidth=1)
+        plt.title(f"{emotion}: feature effects (posterior mean, 94% HDI)")
+        plt.tight_layout()
+        plt.savefig(PLOTS_DIR / f"bach_emotion_ordinal_bayesian_forest_{emotion}.png", dpi=100)
         plt.close("all")
 
     full_summary = pd.concat(all_summaries, ignore_index=True)
